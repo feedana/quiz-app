@@ -163,7 +163,7 @@ function showResults(timeUp = false) {
   resultDiv.classList.remove("hidden");
 
   let score = 0;
-  let resultText = timeUp ? "Time’s up!" : "Your Results";
+  let resultText = timeUp ? "Time iss up" : "Your Results";
 
   userAnswers.forEach((item, index) => {
     const isCorrect = item.chosen === item.correct;
