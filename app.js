@@ -7,6 +7,7 @@ const questionImage = document.getElementById("questionImage");
 const optionsContainer = document.getElementById("optionsContainer");
 const submitBtn = document.getElementById("submitBtn");
 const resultDiv = document.getElementById("result");
+const timerDisplay = document.getElementById("timer");
 
 const quizQuestions = [
   {
@@ -83,6 +84,9 @@ const quizQuestions = [
 
 let currentQuestion = 0;
 let userAnswers = [];
+let selectedAnswer = null;
+let timeLeft = 30; // half minute is enough)
+let timer;
 
 window.onload = () => {
   setTimeout(() => {
@@ -92,10 +96,25 @@ window.onload = () => {
 };
 
 startBtn.addEventListener("click", () => {
+  alert("You have half minute to solve all the questions.");
   welcome.classList.add("hidden");
   quiz.classList.remove("hidden");
+  startTimer();
   showQuestion();
 });
+
+function startTimer() {
+  timerDisplay.textContent = `Time left: ${timeLeft}s`;
+  timer = setInterval(() => {
+    timeLeft--;
+    timerDisplay.textContent = `Time left: ${timeLeft}s`;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      showResults(true);
+    }
+  }, 1000);
+}
 
 function showQuestion() {
   const q = quizQuestions[currentQuestion];
@@ -111,8 +130,6 @@ function showQuestion() {
   });
 }
 
-let selectedAnswer = null;
-
 function selectOption(element, answer) {
   const allOptions = document.querySelectorAll(".option");
   allOptions.forEach(opt => opt.classList.remove("selected"));
@@ -121,7 +138,7 @@ function selectOption(element, answer) {
 }
 
 submitBtn.addEventListener("click", () => {
-  if (!selectedAnswer) return alert("Please select an answer!");
+  if (!selectedAnswer) return alert("Please select an answer");
 
   const current = quizQuestions[currentQuestion];
   userAnswers.push({
@@ -136,21 +153,22 @@ submitBtn.addEventListener("click", () => {
   if (currentQuestion < quizQuestions.length) {
     showQuestion();
   } else {
+    clearInterval(timer);
     showResults();
   }
 });
 
-function showResults() {
+function showResults(timeUp = false) {
   quiz.classList.add("hidden");
   resultDiv.classList.remove("hidden");
 
   let score = 0;
-  resultDiv.innerHTML = "Your Results";
+  let resultText = timeUp ? "Time’s up!" : "Your Results";
 
   userAnswers.forEach((item, index) => {
     const isCorrect = item.chosen === item.correct;
     if (isCorrect) score++;
-    resultDiv.innerHTML += `
+    resultText += `
       <div class="option ${isCorrect ? "correct" : "wrong"}">
         <p><strong>${index + 1})</strong> ${item.question}</p>
         <p>Your answer: ${item.chosen}</p>
@@ -159,5 +177,6 @@ function showResults() {
     `;
   });
 
-  resultDiv.innerHTML += `Final Score: ${score} / ${quizQuestions.length}`;
+  resultText += `<p>Final Score: ${score} / ${quizQuestions.length}</p>`;
+  resultDiv.innerHTML = resultText;
 }
