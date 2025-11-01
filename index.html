@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Quiz App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="loading-screen" id="loading">
+      <div class="loader"></div>
+      <p>Loading...</p>
+    </div>
+
+    <div class="welcome-screen hidden" id="welcome">
+      <h1>Welcome to the Frontend Quiz!</h1>
+      <button id="startBtn">Start Exam</button>
+    </div>
+
+    <div class="quiz hidden" id="quiz">
+      <img id="questionImage" class="question-img" src="" alt="Question Image" />
+      <h2 id="questionText"></h2>
+      <div id="optionsContainer" class="options-container"></div>
+      <button id="submitBtn">Submit</button>
+    </div>
+
+    <div class="result hidden" id="result"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
