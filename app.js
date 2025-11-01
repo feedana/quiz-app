@@ -81,7 +81,7 @@ const quizQuestions = [
     image: "images/html.png"
   }
 ];
-
+// timer
 let currentQuestion = 0;
 let userAnswers = [];
 let selectedAnswer = null;
@@ -116,6 +116,7 @@ function startTimer() {
   }, 1000);
 }
 
+// quiz
 function showQuestion() {
   const q = quizQuestions[currentQuestion];
   questionText.textContent = q.question;
