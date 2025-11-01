@@ -48,7 +48,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #45a045;
 }
 
 .question-img {
@@ -71,7 +71,6 @@ button:hover {
   width: 100%;
   text-align: left;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .option:hover {
@@ -79,7 +78,7 @@ button:hover {
 }
 
 .option.selected {
-  background: #a9a9a9; /* darker grey when chosen */
+  background: #a9a9a9; 
   color: white;
 }
 

@@ -18,25 +18,25 @@ const quizQuestions = [
       "Hyper Transfer Makeup Language"
     ],
     correct: "Hyper Text Markup Language",
-    image: "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
+    image: "images/html.png"
   },
   {
     question: "Which CSS property controls text size?",
     options: ["font-style", "text-size", "font-size", "text-weight"],
     correct: "font-size",
-    image: "https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg"
+    image: "images/css.png"
   },
   {
     question: "Which tag is used to include JavaScript in HTML?",
     options: ["<link>", "<js>", "<script>", "<style>"],
     correct: "<script>",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg"
+    image: "images/js.png"
   },
   {
     question: "Which layout model does Flexbox represent?",
     options: ["2D Grid", "1D layout", "Float-based", "Inline-block layout"],
     correct: "1D layout",
-    image: "https://cdn-icons-png.flaticon.com/512/919/919826.png"
+    image: "images/flexbox.png"
   },
   {
     question: "What is the purpose of media queries in CSS?",
@@ -47,37 +47,37 @@ const quizQuestions = [
       "To style images"
     ],
     correct: "To adapt layout to device screen size",
-    image: "https://cdn-icons-png.flaticon.com/512/1828/1828884.png"
+    image: "images/css.png"
   },
   {
     question: "Which HTML tag is used to define the largest heading?",
     options: ["<head>", "<h6>", "<heading>", "<h1>"],
     correct: "<h1>",
-    image: "https://cdn-icons-png.flaticon.com/512/888/888848.png"
+    image: "images/html.png"
   },
   {
     question: "In CSS, how do you select an element with the id 'header'?",
     options: [".header", "header", "#header", "*header"],
     correct: "#header",
-    image: "https://cdn-icons-png.flaticon.com/512/732/732190.png"
+    image: "images/css.png"
   },
   {
     question: "Which of the following is a JavaScript framework?",
     options: ["Django", "Laravel", "React", "Flask"],
     correct: "React",
-    image: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    image: "images/js.png"
   },
   {
     question: "Which CSS property is used to change the background color?",
     options: ["color", "background-color", "bgcolor", "background"],
     correct: "background-color",
-    image: "https://cdn-icons-png.flaticon.com/512/888/888879.png"
+    image: "images/css.png"
   },
   {
     question: "Which of the following is NOT a semantic HTML element?",
     options: ["<article>", "<footer>", "<div>", "<header>"],
     correct: "<div>",
-    image: "https://cdn-icons-png.flaticon.com/512/733/733585.png"
+    image: "images/html.png"
   }
 ];
 
@@ -145,7 +145,7 @@ function showResults() {
   resultDiv.classList.remove("hidden");
 
   let score = 0;
-  resultDiv.innerHTML = "<h2>Your Results</h2>";
+  resultDiv.innerHTML = "Your Results";
 
   userAnswers.forEach((item, index) => {
     const isCorrect = item.chosen === item.correct;
@@ -159,5 +159,5 @@ function showResults() {
     `;
   });
 
-  resultDiv.innerHTML += `<h3>Final Score: ${score} / ${quizQuestions.length}</h3>`;
+  resultDiv.innerHTML += `Final Score: ${score} / ${quizQuestions.length}`;
 }
